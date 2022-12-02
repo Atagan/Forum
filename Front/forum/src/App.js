@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import MainView from './Components/MainView/MainView';
+import AddPostButton from "./Components/Thread/AddPostButton";
+import {useState} from 'react';
 
 function App() {
+  const[buttonPopup, setButtonPopup] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainView></MainView>
+      <AddPostButton trigger={buttonPopup} setTrigger={setButtonPopup}></AddPostButton>
     </div>
   );
 }
