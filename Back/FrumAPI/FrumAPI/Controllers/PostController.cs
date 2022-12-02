@@ -1,6 +1,7 @@
 ﻿using ForumAPI.Model;
 using ForumAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Microsoft.VisualBasic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -89,38 +90,58 @@ namespace ForumAPI.Controllers
             }
         }
 
-        // GET api/<PostController>/5
-        [HttpGet("{id}")]
-        public ActionResult<Post> Get(string id)
-        {
-            Post result = _postService.Get(id);
-
-            if (result == null)
-            {
-                return NotFound($"Team with ID={id} not found");
-            }
-            return result;
-        }
 
         // POST api/<PostController>
         [HttpPost]
         public ActionResult<Post> Post([FromBody] Post post)
         {
-            foreach (string s in strings)
-            {
-                if (post.Title.ToLower().Contains(s.ToLower())) {
-                    return BadRequest("banned words in title");
-                }
-            }
-
             _postService.Create(post);
             return CreatedAtAction(nameof(Get), new { id = post.Id }, post);
         }
 
         [HttpGet("{hilo}/{title}")]
-        public ActionResult<bool> FindDuplicate(string hilo, string title)
+        public ActionResult<bool> ValidateTitle(string hilo, string title)
         {
-            return _postService.FindDuplicate(title, hilo);
+            foreach (string s in strings)
+            {
+                if (title.ToLower().Contains(s.ToLower()))
+                {
+                    return BadRequest("banned words in title");
+                }
+            }
+            if (_postService.FindDuplicate(title, hilo))
+            {
+                return BadRequest("Repeated Title in this Thread");
+            }
+            return true;
+        }
+
+        [HttpGet("threads")]
+        public ActionResult<List<String>> GetAllThreads()
+        {
+            return _postService.GetAllThreads();
+        }
+
+
+
+        // GET api/<PostController>/5
+        [HttpGet("posts/{id}")]
+        public ActionResult<Post> Get(string id)
+        {
+            Console.WriteLine(id);
+            Post result = _postService.Get(id);
+           
+            if (result == null)
+            {
+                return NotFound($"Post with ID={id} not found");
+            }
+            return result;
+        }
+
+        [HttpGet("posts/{name}")]
+        public ActionResult<List<Post>> GetPostsByThread(string threadName)
+        {
+            return _postService.GetPostsByThread(threadName);
         }
 
         // PUT api/<PostController>/5

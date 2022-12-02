@@ -9,6 +9,8 @@ namespace ForumAPI.Services
         List<Post> GetAll();    
         bool FindDuplicate(string title,string hilo);
         Post Create(Post post);
+        List<String> GetAllThreads();
+        List<Post> GetPostsByThread(string name);
         Post Update(String id, Post post);
     }
 }

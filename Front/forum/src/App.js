@@ -14,12 +14,14 @@ function App() {
   const [buttonPopup, setButtonPopup] = useState(false);
 
   return (
-    <><Router>
-      <Routes>
-        <Route exact path="/home" element={<MainView />} />
-        <Route path="/*" element={<Navigate to="/home" />} />
-      </Routes>
-      </Router></>
+    <>
+      <Router>
+        <Routes>
+          <Route exact path="/home" element={<MainView />} />
+          <Route path="/*" element={<Navigate to="/home" />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

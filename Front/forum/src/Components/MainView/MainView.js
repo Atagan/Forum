@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from 'react';
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
@@ -15,12 +15,11 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import AddPostButton from "../Thread/AddPostButton";
-
+import { getAllThreads } from "../../Services/PostService";
 
 function createData(threadTitle) {
-    
   return {
-    threadTitle,
+    title: threadTitle,
     history: [
       {
         title: "Post title",
@@ -47,59 +46,63 @@ function Row(props) {
   const [open, setOpen] = React.useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
 
+  console.log(row)
   return (
-    
     <>
-    <React.Fragment>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
-        <TableCell sx={{ width: 10 }}>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.threadTitle}
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Posts
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Title</TableCell>
-                    <TableCell>Category</TableCell>
-                    <TableCell>Body</TableCell>
-                    <TableCell>
-                        <AddPostButton className="addbutton" trigger={buttonPopup} setTrigger={setButtonPopup}></AddPostButton>
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.title}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.title}
+      <React.Fragment>
+        <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+          <TableCell sx={{ width: 10 }}>
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </TableCell>
+          <TableCell component="th" scope="row">
+            {row.title}
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <Box sx={{ margin: 1 }}>
+                <Typography variant="h6" gutterBottom component="div">
+                  Posts
+                </Typography>
+                <Table size="small" aria-label="purchases">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Title</TableCell>
+                      <TableCell>Category</TableCell>
+                      <TableCell>Body</TableCell>
+                      <TableCell>
+                        <AddPostButton
+                          className="addbutton"
+                          trigger={buttonPopup}
+                          setTrigger={setButtonPopup}
+                        ></AddPostButton>
                       </TableCell>
-                      <TableCell>{historyRow.category}</TableCell>
-                      <TableCell align="left">{historyRow.body}</TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
+                  </TableHead>
+                  <TableBody>
+                    {row.history.map((historyRow) => (
+                      <TableRow key={historyRow.title}>
+                        <TableCell component="th" scope="row">
+                          {historyRow.title}
+                        </TableCell>
+                        <TableCell>{historyRow.category}</TableCell>
+                        <TableCell align="left">{historyRow.body}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </Box>
+            </Collapse>
+          </TableCell>
+        </TableRow>
+      </React.Fragment>
     </>
   );
 }
@@ -122,18 +125,25 @@ function Row(props) {
 //   }).isRequired,
 // };
 
-const rows = [
-  createData("Thread Title"),
-  createData("Thread Title"),
-  createData("Thread Title"),
-  createData("Thread Title"),
-  createData("Thread Title"),
-  createData("Thread Title"),
-  createData("Thread Title"),
-];
-
 export default function MainView() {
-    // const[buttonPopup, setButtonPopup] = useState(false);
+  const [threads, setThreads] = React.useState([]);
+
+   function getThreads() {
+     getAllThreads().then((loadedThreads) => {
+      setThreads(loadedThreads)
+    });
+  
+  }
+
+
+  useEffect(() => {
+    getThreads()
+  }, [])
+
+  //console.log("threads", threads);
+  const rows = threads?.map((thread) => createData(thread));
+  //console.log("rows",rows);
+  // const[buttonPopup, setButtonPopup] = useState(false);
   return (
     <TableContainer component={Paper} sx={{ width: 1000, margin: 10 }}>
       <Table aria-label="collapsible table">
@@ -144,8 +154,8 @@ export default function MainView() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.threadTitle} row={row} />
+          {rows?.map((row) => (
+            <Row key={row.title} row={row} />
           ))}
         </TableBody>
       </Table>

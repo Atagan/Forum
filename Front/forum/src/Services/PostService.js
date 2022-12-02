@@ -8,6 +8,16 @@ export async function getAllPosts() {
     }
 }
 
+export async function getAllThreads() {
+
+    try{
+        const response = await fetch('/api/Post/threads',{method: 'GET'});
+        return await response.json();
+    }catch(error) {
+        return [];
+    }
+}
+
 export async function createPost(data) {
 
     const response = await fetch(`/api/Post`, {
@@ -15,5 +25,10 @@ export async function createPost(data) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
       })
+    return await response.json();
+}
+
+export async function validateTitle(thread, title) {
+    const response = await fetch(`/api/Post/${thread}/${title}`);
     return await response.json();
 }

@@ -11,7 +11,6 @@ namespace ForumAPI.Services
             posts.Add(post);
             return post;
         }
-        
 
         public Post Get(String id)
         {
@@ -33,6 +32,29 @@ namespace ForumAPI.Services
                 return true;
             }
             else { return false; }
+        }
+
+        public List<String> GetAllThreads()
+        {
+            List<String> result = new List<String>();
+            foreach (Post post in posts)
+            {
+                result.Add(post.hilo);
+            }
+            return result.Distinct().ToList();
+        }
+
+        public List<Post> GetPostsByThread(string name)
+        {
+            List<Post> result = new List<Post>();
+            foreach(Post post in posts)
+            {
+                if (post.hilo == name)
+                {
+                    result.Add(post);
+                }
+            }
+            return result;
         }
 
         public Post Update(string id, Post post)
