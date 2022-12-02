@@ -28,11 +28,10 @@ namespace ForumAPI.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
-
+            
         // GET api/<PostController>/5
         [HttpGet("{id}")]
         public ActionResult<Post> Get(string id)
