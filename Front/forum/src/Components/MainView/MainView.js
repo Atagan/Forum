@@ -15,7 +15,7 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import AddPostButton from "../Thread/AddPostButton";
-import { getAllThreads } from "../../Services/PostService";
+import { getAllThreads, getPostsByThread } from "../../Services/PostService";
 
 function createData(threadTitle) {
   return {
@@ -42,11 +42,23 @@ function createData(threadTitle) {
 }
 
 function Row(props) {
-  const { row } = props;
+  const  row  = props;
   const [open, setOpen] = React.useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [posts, setPosts] = React.useState([]);
 
-  console.log(row)
+
+  function getPosts() {
+    getPostsByThread(props.thread).then((loadedPosts) => {
+      console.log(loadedPosts)
+      setPosts(loadedPosts);
+    });
+  }
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+  console.log("posts", posts);
   return (
     <>
       <React.Fragment>
@@ -61,7 +73,7 @@ function Row(props) {
             </IconButton>
           </TableCell>
           <TableCell component="th" scope="row">
-            {row.title}
+            {row.thread}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -87,12 +99,12 @@ function Row(props) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {row.history.map((historyRow) => (
+                    {posts.map((historyRow) => (
                       <TableRow key={historyRow.title}>
                         <TableCell component="th" scope="row">
                           {historyRow.title}
                         </TableCell>
-                        <TableCell>{historyRow.category}</TableCell>
+                        <TableCell>{historyRow.tag}</TableCell>
                         <TableCell align="left">{historyRow.body}</TableCell>
                       </TableRow>
                     ))}
@@ -128,20 +140,17 @@ function Row(props) {
 export default function MainView() {
   const [threads, setThreads] = React.useState([]);
 
-   function getThreads() {
-     getAllThreads().then((loadedThreads) => {
-      setThreads(loadedThreads)
+  function getThreads() {
+    getAllThreads().then((loadedThreads) => {
+      setThreads(loadedThreads);
     });
-  
   }
 
-
   useEffect(() => {
-    getThreads()
-  }, [])
+    getThreads();
+  }, []);
 
-  //console.log("threads", threads);
-  const rows = threads?.map((thread) => createData(thread));
+
   //console.log("rows",rows);
   // const[buttonPopup, setButtonPopup] = useState(false);
   return (
@@ -154,8 +163,8 @@ export default function MainView() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows?.map((row) => (
-            <Row key={row.title} row={row} />
+          {threads?.map((thread) => (
+            <Row key={thread} thread={thread} />
           ))}
         </TableBody>
       </Table>

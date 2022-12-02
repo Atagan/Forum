@@ -5,19 +5,19 @@ import './AddPostButton.css';
 
 const AddPostButton= (props) => {
     const[buttonPopup, setButtonPopup] = useState(false);
-    // const savePostDataHandler = (enteredPostData) => {
-    //     const postData = {
-    //         ...enteredPostData,
-    //         // id:""
-    //     };
-    //     props.onAddPost(postData);
-    // };
+    const savePostDataHandler = (enteredPostData) => {
+        const postData = {
+            ...enteredPostData,
+            // id:""
+        };
+        props.onAddPost(postData);
+    };
 
     return (
         <div className='addpost-button'>
             
-            <button className='addbutton'><span class='material-icons' onClick={() => setButtonPopup(true)}>post_add</span></button>
-            <AddPost trigger={buttonPopup} setTrigger = {setButtonPopup} ></AddPost>
+            <button className='addbutton'><span className='material-icons' onClick={() => setButtonPopup(true)}>post_add</span></button>
+            <AddPost trigger={buttonPopup} setTrigger = {setButtonPopup} onSavePostData={savePostDataHandler}></AddPost>
         </div>
     );
 };

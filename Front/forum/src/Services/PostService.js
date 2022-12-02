@@ -1,7 +1,7 @@
 export async function getAllPosts() {
 
     try{
-        const response = await fetch('/api/Post');
+        const response = await fetch('/api/Post/getPosts');
         return await response.json();
     }catch(error) {
         return [];
@@ -12,6 +12,15 @@ export async function getAllThreads() {
 
     try{
         const response = await fetch('/api/Post/threads',{method: 'GET'});
+        return await response.json();
+    }catch(error) {
+        return [];
+    }
+}
+
+export async function getPostsByThread(threadName) {
+    try{
+        const response = await fetch(`/api/Post/GetPostsByThread/${threadName}`,{method: 'GET'});
         return await response.json();
     }catch(error) {
         return [];

@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "56b21239-2676-4dc4-8779-62b4e9d9f902",
+		"name": "ForumApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24675286"
+	},
+	"item": [
+		{
+			"name": "Gets",
+			"item": [
+				{
+					"name": "GetAllPosts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7114/api/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7114",
+							"path": [
+								"api",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ValidatePostTitle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7114/api/Post/Tips/IwantThisToWork",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7114",
+							"path": [
+								"api",
+								"Post",
+								"Tips",
+								"IwantThisToWork"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllDifferentThreads",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7114/api/Post/threads",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7114",
+							"path": [
+								"api",
+								"Post",
+								"threads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetThreadById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7114/api/Post/getPosts/string",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7114",
+							"path": [
+								"api",
+								"Post",
+								"getPosts",
+								"string"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostsByThreadName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7114/api/Post/getPosts/string",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7114",
+							"path": [
+								"api",
+								"Post",
+								"getPosts",
+								"string"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ValidateBannedWord",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "AddBrandNewPost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"123\",\r\n  \"hilo\": \"tips\",\r\n  \"title\": \"Hello\",\r\n  \"tag\": \"question\",\r\n  \"body\": \"Hello,ImNew\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7114/api/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7114",
+							"path": [
+								"api",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddRepeatedPost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"111\",\r\n  \"hilo\": \"tips\",\r\n  \"title\": \"ThisIsRepeated\",\r\n  \"tag\": \"question\",\r\n  \"body\": \"Hello,ImUnoriginal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7114/api/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7114",
+							"path": [
+								"api",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

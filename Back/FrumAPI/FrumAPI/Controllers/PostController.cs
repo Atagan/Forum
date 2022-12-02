@@ -125,7 +125,7 @@ namespace ForumAPI.Controllers
 
 
         // GET api/<PostController>/5
-        [HttpGet("posts/{id}")]
+        [HttpGet("getPosts/{id}")]
         public ActionResult<Post> Get(string id)
         {
             Console.WriteLine(id);
@@ -138,10 +138,10 @@ namespace ForumAPI.Controllers
             return result;
         }
 
-        [HttpGet("posts/{name}")]
-        public ActionResult<List<Post>> GetPostsByThread(string threadName)
+        [HttpGet("GetPostsByThread/{name}")]
+        public ActionResult<List<Post>> GetPostsByThread(string name)
         {
-            return _postService.GetPostsByThread(threadName);
+            return _postService.GetPostsByThread(name);
         }
 
         // PUT api/<PostController>/5

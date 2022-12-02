@@ -16,31 +16,7 @@ const AddPost = (props) => {
     setSelectedValue(event.target.value);
   };
 
-// Title input
-  // const [enteredTitle, setEnteredTitle] = useState("");
 
-  // const titleChangeHandler = (event) => {
-  //   setEnteredTitle(event.target.value);
-  // };
-
-  //   // Body input
-  // const [enteredBody, setEnteredBody] = useState("");
-
-  // const bodyChangeHandler = (event) => {
-  //   setEnteredBody(event.target.value);
-  // };
-
-  // const submitHandler = (event) => {
-  //   event.preventDefault();
-  //   const postData = {
-  //     title: enteredTitle,
-  //     body:  enteredBody,
-  //   };
-
-
-  //   props.onSavePostData(postData);
-  //   setEnteredTitle("");
-  //   setEnteredBody("");
     
 
   return (props.trigger) ? (
