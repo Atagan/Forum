@@ -1,6 +1,17 @@
 .hidden{
     visibility: hidden;
 }
+.post-form{
+    display: flex;
+    flex-direction: column;
+    
+}
+.title-form{
+    margin: 5%;
+}
+.written-form{
+    margin: 5%;
+}
 .addpost-form {
     display: flex;
   flex-direction: column;
@@ -20,6 +31,13 @@
 .radiobuttons{
     display: flex;
     flex-direction: row;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    align-self: center;
+}
+.material-icons{
+    text-align: center;
 }
 .category-icon{
     display: flex;

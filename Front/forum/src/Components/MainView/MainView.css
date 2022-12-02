@@ -1,0 +1,8 @@
+.addbutton {
+    width: fit-content;
+    background: transparent;
+    border: none;
+}
+.addbutton:hover{
+    color: blueviolet;
+}

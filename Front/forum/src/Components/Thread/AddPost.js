@@ -16,6 +16,7 @@ function AddPost(props) {
         <div className="popup-inner">
           <div className="addpost-form">
             <TextField
+              fullWidth
               id="title"
               label="Title"
               type="text"
@@ -23,7 +24,6 @@ function AddPost(props) {
               helperText="Please enter your  first name"
               autoComplete="off"
               margin="normal"
-              sx={{ m: 1, width: 500 }}
             />
             <button className="checkbutton">
               <span
@@ -65,6 +65,16 @@ function AddPost(props) {
                     inputProps={{ "aria-label": "C" }}
                   />
                 </div>
+              </div>
+              <div className="written-form">
+                <TextField
+                  fullWidth
+                  id="written-form"
+                  label="Write the post here"
+                  multiline
+                  rows={5}
+                  defaultValue=""
+                />
               </div>
             </div>
           </div>

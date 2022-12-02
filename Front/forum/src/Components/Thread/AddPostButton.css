@@ -1,0 +1,9 @@
+.addbutton {
+    width: 25px;
+    background: transparent;
+    border: none;
+}
+.addbutton:hover{
+    color: white;
+    background: purple;
+}

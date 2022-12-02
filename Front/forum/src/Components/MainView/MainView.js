@@ -79,7 +79,7 @@ function Row(props) {
                     <TableCell>Category</TableCell>
                     <TableCell>Body</TableCell>
                     <TableCell>
-                        <AddPostButton trigger={buttonPopup} setTrigger={setButtonPopup}></AddPostButton>
+                        <AddPostButton className="addbutton" trigger={buttonPopup} setTrigger={setButtonPopup}></AddPostButton>
                     </TableCell>
                   </TableRow>
                 </TableHead>
