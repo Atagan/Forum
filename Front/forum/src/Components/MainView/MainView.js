@@ -133,7 +133,6 @@ const rows = [
 ];
 
 export default function MainView() {
-    // const[buttonPopup, setButtonPopup] = useState(false);
   return (
     <TableContainer component={Paper} sx={{ width: 1000, margin: 10 }}>
       <Table aria-label="collapsible table">

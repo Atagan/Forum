@@ -1,22 +1,51 @@
 import "./AddPost.css";
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { purple, common } from "@mui/material/colors";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 
-function AddPost(props) {
+const AddPost = (props) => {
+  // Switches categories
   const [selectedValue, setSelectedValue] = React.useState("");
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
 
-  return props.trigger ? (
+// Title input
+  // const [enteredTitle, setEnteredTitle] = useState("");
+
+  // const titleChangeHandler = (event) => {
+  //   setEnteredTitle(event.target.value);
+  // };
+
+  //   // Body input
+  // const [enteredBody, setEnteredBody] = useState("");
+
+  // const bodyChangeHandler = (event) => {
+  //   setEnteredBody(event.target.value);
+  // };
+
+  // const submitHandler = (event) => {
+  //   event.preventDefault();
+  //   const postData = {
+  //     title: enteredTitle,
+  //     body:  enteredBody,
+  //   };
+
+
+  //   props.onSavePostData(postData);
+  //   setEnteredTitle("");
+  //   setEnteredBody("");
+    
+
+  return (props.trigger) ? (
     <>
+    {/* <form onSubmit={submitHandler}> */}
       <div className="popup">
         <div className="popup-inner">
           <div className="addpost-form">
@@ -32,6 +61,8 @@ function AddPost(props) {
               helperText="Please enter your  first name"
               autoComplete="off"
               margin="normal"
+              // value={enteredTitle}
+              // onChange={titleChangeHandler}
             />
             <button className="checkbutton">
               <span
@@ -82,6 +113,8 @@ function AddPost(props) {
                   multiline
                   rows={5}
                   defaultValue=""
+              //     value={enteredBody}
+              // onChange={bodyChangeHandler}
                 />
               </div>
               <div className="bannedwords-button">
@@ -108,9 +141,11 @@ function AddPost(props) {
           </div>
         </div>
       </div>
+      {/* </form> */}
     </>
   ) : (
     ""
   );
-}
+};
+// }
 export default AddPost;
