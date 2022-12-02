@@ -1,0 +1,46 @@
+.hidden{
+    visibility: hidden;
+}
+.addpost-form {
+    display: flex;
+  flex-direction: column;
+  background: white;
+  overflow: scroll;
+  height: 500px;
+  width: 600px;
+}
+.checkbutton {
+    width: fit-content;
+    background: transparent;
+    border: none;
+}
+.checkbutton:hover{
+    color: blueviolet;
+}
+.radiobuttons{
+    display: flex;
+    flex-direction: row;
+}
+.category-icon{
+    display: flex;
+    flex-direction: column;
+}
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(189, 206, 218, 0.511);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup-inner {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    background-color: rgb(254, 254, 254);
+}
