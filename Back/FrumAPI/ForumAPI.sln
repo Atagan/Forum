@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrumAPI", "FrumAPI\FrumAPI.csproj", "{CFA504BB-BB33-450A-A9EC-276051D2BA3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumAPI", "FrumAPI\ForumAPI.csproj", "{CFA504BB-BB33-450A-A9EC-276051D2BA3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumAPITests1", "ForumAPITests1\ForumAPITests1.csproj", "{67F49E41-22E1-4BA1-93CF-FC449A9A3D8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CFA504BB-BB33-450A-A9EC-276051D2BA3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA504BB-BB33-450A-A9EC-276051D2BA3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA504BB-BB33-450A-A9EC-276051D2BA3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F49E41-22E1-4BA1-93CF-FC449A9A3D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F49E41-22E1-4BA1-93CF-FC449A9A3D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F49E41-22E1-4BA1-93CF-FC449A9A3D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F49E41-22E1-4BA1-93CF-FC449A9A3D8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
