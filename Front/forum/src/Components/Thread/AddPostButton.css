@@ -1,5 +1,5 @@
 .addbutton {
-    width: 25px;
+    width: fit-content;
     background: transparent;
     border: none;
 }

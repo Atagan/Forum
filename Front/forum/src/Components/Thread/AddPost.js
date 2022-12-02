@@ -2,6 +2,11 @@ import "./AddPost.css";
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
 import * as React from "react";
+import Button from "@mui/material/Button";
+import { purple, common } from "@mui/material/colors";
+import Switch from "@mui/material/Switch";
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 
 function AddPost(props) {
   const [selectedValue, setSelectedValue] = React.useState("");
@@ -15,6 +20,9 @@ function AddPost(props) {
       <div className="popup">
         <div className="popup-inner">
           <div className="addpost-form">
+            <div >
+          <Button className="cancel-button" sx={{ mt: 3, mb: 2, minWidth: "20" }} onClick={() => props.setTrigger(false)}>Cancel</Button>
+          </div>
             <TextField
               fullWidth
               id="title"
@@ -75,6 +83,26 @@ function AddPost(props) {
                   rows={5}
                   defaultValue=""
                 />
+              </div>
+              <div className="bannedwords-button">
+                <Button
+                  onClick={() => props.setTrigger(false)}
+                  variant="outlined"
+                >
+                  Check if you were a good boi
+                </Button>
+              </div>
+              <div className="sendpost-form">
+                <Button
+                  className="checkbutton"
+                  // variant="contained"
+                  sx={{ mt: 3, mb: 2, minWidth: "20" }}
+                >
+                  Submit
+                </Button>
+                <div className="switch">
+                <FormControlLabel control={<Switch defaultChecked />} label="Public" />
+                </div>
               </div>
             </div>
           </div>

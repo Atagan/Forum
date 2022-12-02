@@ -6,6 +6,14 @@
     flex-direction: column;
     
 }
+.bannedwords-button {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    align-self: center;
+}
 .title-form{
     margin: 5%;
 }
@@ -19,6 +27,18 @@
   overflow: scroll;
   height: 500px;
   width: 600px;
+}
+.sendpost-form{
+    display: flex;
+    flex-direction: row;
+}
+.cancel-button {
+    width: fit-content;
+    background: transparent;
+    border: none;
+}
+.cancel-button:hover{
+    color: blueviolet;
 }
 .checkbutton {
     width: fit-content;

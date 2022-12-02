@@ -8,7 +8,7 @@ const AddPostButton= (props) => {
     return (
         <div className='addpost-button'>
             
-            <button className='addbutton'><span class='material-icons' onClick={() => setButtonPopup(true)}>add_post</span></button>
+            <button className='addbutton'><span class='material-icons' onClick={() => setButtonPopup(true)}>post_add</span></button>
             <AddPost trigger={buttonPopup} setTrigger = {setButtonPopup}></AddPost>
         </div>
     );
